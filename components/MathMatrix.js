@@ -7,7 +7,7 @@ const mathMatrix = [
 ];
 import { useState } from "react";
 import { TextField, Button, Grid, Typography } from "@mui/material";
-const MathMatrix = ({ validateProgress }) => {
+const MathMatrix = ({ validateProgress, status }) => {
     const [mathInputs, setMathInputs] = useState({
         0: "",
         1: "",
@@ -34,7 +34,6 @@ const MathMatrix = ({ validateProgress }) => {
         }
     };
 
-    console.log(mathInputs);
     return (
         <>
             {mathMatrix.map((m, i) => (
@@ -44,7 +43,7 @@ const MathMatrix = ({ validateProgress }) => {
                     </Grid>
                     <Grid item xs={4}>
                         <TextField
-                            required={true}
+                            disabled={status}
                             type="number"
                             onChange={(e) => {
                                 handleMathInput(e.target.value, i);
@@ -65,6 +64,7 @@ const MathMatrix = ({ validateProgress }) => {
                 </Grid>
             ))}
             <Button
+                sx={{ display: status ? "none" : "flex" }}
                 onClick={() => {
                     checkAnswers();
                 }}>

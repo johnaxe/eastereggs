@@ -48,9 +48,11 @@ const descriptions = {
     3: "Du hittar koden i ägget som ligger i bla 3",
     4: "Du hittar koden i ägget som ligger i bla 4. Glöm inte att kika runt noga nu!",
     5: "Du hittar koden i ägget som ligger i bla 5",
+    6: "Nu blir det ett svårare pussel. Ha tålamod :-)",
     7: "Du hittar koden i ägget som ligger i bla 7",
     8: "Du hittar koden i ägget som ligger i bla 8",
     9: "Du hittar koden i ägget som ligger i bla 9",
+    10: "Lös alla mattetalen nedan genom att skriva rätt svar. Kontrollera dina svar genom att klicka på knappen.",
 };
 
 const Home = () => {
@@ -170,7 +172,6 @@ const Home = () => {
         }
     };
 
-    console.log(progress);
     return (
         <>
             {timeLeft == 0 && (
@@ -251,7 +252,10 @@ const Home = () => {
                     {progress == 10 && (
                         <>
                             <Typography variant="h4" className="text-center">
-                                #{progress} Lös mattetalen!!
+                                #{progress} MATTETAJM
+                            </Typography>
+                            <Typography variant="body1" className="text-center">
+                                {descriptions[progress]}
                             </Typography>
                             <Alert
                                 sx={{ width: "100%", my: 2 }}
@@ -267,13 +271,19 @@ const Home = () => {
                                         : "Ej avklarad"}
                                 </Typography>
                             </Alert>
-                            <MathMatrix validateProgress={validateProgress} />
+                            <MathMatrix
+                                validateProgress={validateProgress}
+                                status={status[progress]}
+                            />
                         </>
                     )}
                     {progress == 1 && (
                         <>
                             <Typography variant="h4" className="text-center">
-                                #{progress} Lös pusslet!!
+                                #{progress} PUSSELTAJM
+                            </Typography>
+                            <Typography variant="body1" className="text-center">
+                                {descriptions[progress]}
                             </Typography>
                             <Alert
                                 sx={{ width: "100%", my: 2 }}
@@ -291,8 +301,8 @@ const Home = () => {
                             </Alert>
                             <JigsawPuzzle
                                 imageSrc="/IMG_1738.png"
-                                rows={3}
-                                columns={3}
+                                rows={2}
+                                columns={2}
                                 onSolved={() => {
                                     validateProgress("success");
                                 }}
@@ -302,7 +312,10 @@ const Home = () => {
                     {progress == 6 && (
                         <>
                             <Typography variant="h4" className="text-center">
-                                #{progress} Lös pusslet!!
+                                #{progress} PUSSELTAJM 2
+                            </Typography>
+                            <Typography variant="body1" className="text-center">
+                                {descriptions[progress]}
                             </Typography>
                             <Alert
                                 sx={{ width: "100%", my: 2 }}
@@ -320,8 +333,8 @@ const Home = () => {
                             </Alert>
                             <JigsawPuzzle
                                 imageSrc="/IMG_0426.png"
-                                rows={4}
-                                columns={4}
+                                rows={2}
+                                columns={2}
                                 onSolved={() => {
                                     validateProgress("success");
                                 }}
@@ -332,7 +345,7 @@ const Home = () => {
                         (progress >= 7 && progress < 10)) && (
                         <>
                             <Typography variant="h4" className="text-center">
-                                #{progress} Skriv in koden!
+                                #{progress} LETATAJM
                             </Typography>
                             <Typography variant="body1" className="text-center">
                                 {descriptions[progress]}
