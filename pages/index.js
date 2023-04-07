@@ -213,7 +213,7 @@ const Home = () => {
                     {progress == 11 && (
                         <>
                             <Typography
-                                variant="h1"
+                                variant="h2"
                                 className="text-center"
                                 sx={{ color: "darkgreen" }}>
                                 GRATTIS!!
