@@ -1,0 +1,36 @@
+:root {
+    --body-color: #111;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.xy-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.row-center {
+    display: flex;
+    align-items: center;
+
+    flex-direction: row;
+}
+
+.jigsaw-puzzle {
+    width: 100%;
+    min-width: 320px;
+    border: 1px solid #000;
+    max-width: 800px;
+    background-color: #cccccc30;
+}
