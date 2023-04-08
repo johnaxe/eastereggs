@@ -1,9 +1,14 @@
 const mathMatrix = [
-    { index: 0, answer: 9, x: "1 x 9" },
-    { index: 1, answer: 18, x: "2 x 9" },
-    { index: 2, answer: 27, x: "3 x 9" },
-    { index: 3, answer: 36, x: "4 x 9" },
-    { index: 4, answer: 45, x: "5 x 9" },
+    { index: 0, answer: 22, x: "3 * 9 - 5" },
+    { index: 1, answer: 47, x: "2 + 9 * 5" },
+    { index: 2, answer: 121, x: "11 * 11" },
+    { index: 3, answer: 4, x: "(3 - 1) * (7 - 5)" },
+    { index: 4, answer: 28, x: "2 * (13 + 1)" },
+    { index: 5, answer: 45, x: "5 * 9" },
+    { index: 6, answer: 40, x: "43 - 12 + 9" },
+    { index: 7, answer: 20, x: "(2 + 2) * (3 + 2)" },
+    { index: 8, answer: 94, x: "121 - 27" },
+    { index: 9, answer: 144, x: "12 * 12" },
 ];
 import { useState } from "react";
 import { TextField, Button, Grid, Typography } from "@mui/material";
@@ -14,6 +19,11 @@ const MathMatrix = ({ validateProgress, status }) => {
         2: "",
         3: "",
         4: "",
+        5: "",
+        6: "",
+        7: "",
+        8: "",
+        9: "",
     });
 
     const handleMathInput = (val, i) => {
@@ -44,7 +54,7 @@ const MathMatrix = ({ validateProgress, status }) => {
                     <Grid item xs={4}>
                         <TextField
                             disabled={status}
-                            type="number"
+                            type="tel"
                             onChange={(e) => {
                                 handleMathInput(e.target.value, i);
                             }}

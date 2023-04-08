@@ -33,26 +33,27 @@ const imgs = [...Array(6).keys()].map((a, i) => {
 });
 
 const codes = {
-    2: "2222",
-    3: "3333",
-    4: "4444",
-    5: "5555",
-    7: "7777",
-    8: "8888",
-    9: "9999",
+    2: "3244",
+    3: "1365",
+    4: "4498",
+    5: "9511",
+    7: "3766",
+    8: "8877",
+    9: "7951",
 };
 
 const descriptions = {
     1: "Pusslet måste lösas innan du kan gå vidare",
-    2: "Du hittar koden i ägget som ligger i den där som finns i den där som ligger i andra",
-    3: "Du hittar koden i ägget som ligger i bla 3",
-    4: "Du hittar koden i ägget som ligger i bla 4. Glöm inte att kika runt noga nu!",
-    5: "Du hittar koden i ägget som ligger i bla 5",
+    2: "Nära soptunna",
+    3: "YNK 060",
+    4: "Nisses hus",
+    5: "Tända brasa",
     6: "Nu blir det ett svårare pussel. Ha tålamod :-)",
-    7: "Du hittar koden i ägget som ligger i bla 7",
-    8: "Du hittar koden i ägget som ligger i bla 8",
-    9: "Du hittar koden i ägget som ligger i bla 9",
-    10: "Lös alla mattetalen nedan genom att skriva rätt svar. Kontrollera dina svar genom att klicka på knappen.",
+    7: "Nattduksbord",
+    8: "Gungor",
+    9: "Kniv och gaffel",
+    10: "Lös alla mattetalen nedan. Kontrollera dina svar genom att klicka på knappen.",
+    11: "Ett sista pussel. Ta ett djupt andetag nu...",
 };
 
 const Home = () => {
@@ -73,6 +74,7 @@ const Home = () => {
         8: false,
         9: false,
         10: false,
+        11: false,
     });
     const [timeLeft, setTimeLeft] = useState(2);
     const [countdown, setCountdown] = useState({
@@ -175,19 +177,20 @@ const Home = () => {
     return (
         <>
             {timeLeft == 0 && (
-                <Button
+                <Box
                     sx={{
                         position: "fixed",
-                        top: 0,
                         right: 0,
+                        top: 0,
                         width: "auto",
                         m: 0,
+                        p: 1,
                     }}
                     onClick={() => {
                         resetProgress();
                     }}>
                     <RestartAltIcon />
-                </Button>
+                </Box>
             )}
             <Snackbar
                 sx={{ width: "100%" }}
@@ -205,12 +208,12 @@ const Home = () => {
                     {snackStatus.message}
                 </Alert>
             </Snackbar>
-            {progress == 11 && <Confetti recycle={true} />}
-            <Container>
+            {progress == 12 && <Confetti recycle={true} />}
+            <Container disableGutters={true}>
                 <Paper
-                    elevation={2}
-                    sx={{ p: 4, minWidth: 320, maxWidth: 480 }}>
-                    {progress == 11 && (
+                    elevation={0}
+                    sx={{ pt: 2, minWidth: 320, maxWidth: 640 }}>
+                    {progress == 12 && (
                         <>
                             <Typography
                                 variant="h2"
@@ -222,13 +225,13 @@ const Home = () => {
                                 variant="body1"
                                 className="text-center"
                                 sx={{ color: "darkgreen" }}>
-                                Du har klarat jakten! Du hittar en belöning i...
+                                Du har klarat alla uppgifter! Sista ledtråden...
                             </Typography>
                             <Typography
                                 variant="h3"
                                 className="text-center"
                                 sx={{ color: "blue" }}>
-                                STÄLLET SOM SKATTEN FINNS PÅ
+                                LEGO
                             </Typography>
                         </>
                     )}
@@ -245,20 +248,20 @@ const Home = () => {
                         </Box>
                     )}
                     {progress == 0 && (
-                        <Typography variant="h4" className="text-center">
+                        <Typography variant="h5" className="text-center">
                             Påskjakten 2023
                         </Typography>
                     )}
                     {progress == 10 && (
                         <>
-                            <Typography variant="h4" className="text-center">
+                            <Typography variant="h5" className="text-center">
                                 #{progress} MATTETAJM
                             </Typography>
                             <Typography variant="body1" className="text-center">
                                 {descriptions[progress]}
                             </Typography>
                             <Alert
-                                sx={{ width: "100%", my: 2 }}
+                                sx={{ width: "100%" }}
                                 severity={
                                     status[progress] ? "success" : "warning"
                                 }>
@@ -279,14 +282,14 @@ const Home = () => {
                     )}
                     {progress == 1 && (
                         <>
-                            <Typography variant="h4" className="text-center">
+                            <Typography variant="h5" className="text-center">
                                 #{progress} PUSSELTAJM
                             </Typography>
                             <Typography variant="body1" className="text-center">
                                 {descriptions[progress]}
                             </Typography>
                             <Alert
-                                sx={{ width: "100%", my: 2 }}
+                                sx={{ width: "100%" }}
                                 severity={
                                     status[progress] ? "success" : "warning"
                                 }>
@@ -301,8 +304,8 @@ const Home = () => {
                             </Alert>
                             <JigsawPuzzle
                                 imageSrc="/IMG_1738.png"
-                                rows={2}
-                                columns={2}
+                                rows={4}
+                                columns={3}
                                 onSolved={() => {
                                     validateProgress("success");
                                 }}
@@ -311,14 +314,14 @@ const Home = () => {
                     )}
                     {progress == 6 && (
                         <>
-                            <Typography variant="h4" className="text-center">
+                            <Typography variant="h5" className="text-center">
                                 #{progress} PUSSELTAJM 2
                             </Typography>
                             <Typography variant="body1" className="text-center">
                                 {descriptions[progress]}
                             </Typography>
                             <Alert
-                                sx={{ width: "100%", my: 2 }}
+                                sx={{ width: "100%" }}
                                 severity={
                                     status[progress] ? "success" : "warning"
                                 }>
@@ -333,8 +336,40 @@ const Home = () => {
                             </Alert>
                             <JigsawPuzzle
                                 imageSrc="/IMG_0426.png"
-                                rows={2}
-                                columns={2}
+                                rows={4}
+                                columns={4}
+                                onSolved={() => {
+                                    validateProgress("success");
+                                }}
+                            />
+                        </>
+                    )}
+                    {progress == 11 && (
+                        <>
+                            <Typography variant="h5" className="text-center">
+                                #{progress} PUSSELTAJM 3
+                            </Typography>
+                            <Typography variant="body1" className="text-center">
+                                {descriptions[progress]}
+                            </Typography>
+                            <Alert
+                                sx={{ width: "100%" }}
+                                severity={
+                                    status[progress] ? "success" : "warning"
+                                }>
+                                <Typography
+                                    variant="body1"
+                                    className="text-center">
+                                    Status:{" "}
+                                    {status[progress]
+                                        ? "Avklarad!!"
+                                        : "Ej avklarad"}
+                                </Typography>
+                            </Alert>
+                            <JigsawPuzzle
+                                imageSrc="/IMG_0705.png"
+                                rows={5}
+                                columns={4}
                                 onSolved={() => {
                                     validateProgress("success");
                                 }}
@@ -344,14 +379,14 @@ const Home = () => {
                     {((progress >= 2 && progress < 6) ||
                         (progress >= 7 && progress < 10)) && (
                         <>
-                            <Typography variant="h4" className="text-center">
-                                #{progress} LETATAJM
+                            <Typography variant="h5" className="text-center">
+                                #{progress} LETA KODER
                             </Typography>
                             <Typography variant="body1" className="text-center">
-                                {descriptions[progress]}
+                                Ledtråd: {descriptions[progress]}
                             </Typography>
                             <Alert
-                                sx={{ width: "100%", my: 2 }}
+                                sx={{ width: "100%" }}
                                 severity={
                                     status[progress] ? "success" : "warning"
                                 }>
@@ -372,6 +407,7 @@ const Home = () => {
                                 label="Skriv koden här"
                                 placeholder="#kod?"
                                 autoComplete="off"
+                                type="tel"
                                 InputProps={{
                                     sx: {
                                         "& input": {
