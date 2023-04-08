@@ -118,7 +118,7 @@ const Home = () => {
         }, 1000);
     }, []);
 
-    const countDownDate = new Date("Apr 6, 2023 17:00:00").getTime();
+    const countDownDate = new Date("Apr 8, 2023 17:00:00").getTime();
 
     const resetProgress = () => {
         setProgress(0);
@@ -177,7 +177,7 @@ const Home = () => {
 
     return (
         <>
-            {timeLeft == 0 && (
+            {timeLeft == 0 && 1 == 2 && (
                 <Box
                     sx={{
                         position: "fixed",
@@ -213,7 +213,50 @@ const Home = () => {
             <Container disableGutters={true}>
                 <Paper
                     elevation={0}
-                    sx={{ pt: 2, minWidth: 320, maxWidth: 640 }}>
+                    sx={{
+                        pt: 1,
+                        minWidth: 320,
+                        maxWidth: 640,
+                        margin: "0 auto",
+                    }}>
+                    {progress > 0 && (
+                        <>
+                            <Box
+                                sx={{
+                                    position: "fixed",
+                                    right: 0,
+                                    top: 0,
+                                    width: "auto",
+                                    m: 0,
+                                    p: 1,
+                                }}>
+                                <Image
+                                    key={`img_s`}
+                                    alt="easter"
+                                    src="/icon-512x512.png"
+                                    width={32}
+                                    height={32}
+                                />
+                            </Box>
+                            <Box
+                                sx={{
+                                    position: "fixed",
+                                    left: 0,
+                                    top: 0,
+                                    width: "auto",
+                                    m: 0,
+                                    p: 1,
+                                }}>
+                                <Image
+                                    key={`img_s`}
+                                    alt="easter"
+                                    src="/icon-512x512.png"
+                                    width={32}
+                                    height={32}
+                                />
+                            </Box>
+                        </>
+                    )}
                     {progress == 12 && (
                         <>
                             <Typography
@@ -231,9 +274,19 @@ const Home = () => {
                             <Typography
                                 variant="h3"
                                 className="text-center"
-                                sx={{ color: "blue" }}>
+                                sx={{ color: "blue", my: 2 }}>
                                 LEGO
                             </Typography>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: 2,
+                                }}>
+                                {imgs}
+                            </Box>
                         </>
                     )}
                     {progress == 0 && (
@@ -244,14 +297,28 @@ const Home = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 gap: 2,
+                                pt: 4,
                             }}>
                             {imgs}
                         </Box>
                     )}
                     {progress == 0 && (
-                        <Typography variant="h5" className="text-center">
-                            Påskjakten 2023
-                        </Typography>
+                        <>
+                            <Typography
+                                variant="h4"
+                                className="text-center"
+                                sx={{ my: 4 }}>
+                                Påskäggsjakt 2023
+                            </Typography>
+                            <Box sx={{ margin: "0 auto", width: "80px" }}>
+                                <Image
+                                    alt="easter"
+                                    src="/chk.gif"
+                                    width={80}
+                                    height={80}
+                                />
+                            </Box>
+                        </>
                     )}
                     {progress == 10 && (
                         <>
@@ -441,27 +508,33 @@ const Home = () => {
                             <NavigateNextIcon />
                         </Button>
                     ) : (
-                        <Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                flexDirection: "column",
+                                alignItems: "center",
+                            }}>
                             <Typography variant="body1" className="text-center">
                                 Börjar om:
                             </Typography>
                             <Box className="row-center" sx={{ gap: 1 }}>
                                 {timeLeft > 60 * 60 * 24 * 1000 && (
-                                    <Typography variant="body1">
+                                    <Typography variant="h6">
                                         {countdown.days} dag
                                     </Typography>
                                 )}
                                 {timeLeft > 60 * 60 * 1000 && (
-                                    <Typography variant="body1">
+                                    <Typography variant="h6">
                                         {countdown.hours} tim
                                     </Typography>
                                 )}
                                 {timeLeft > 60 * 1000 && (
-                                    <Typography variant="body1">
+                                    <Typography variant="h6">
                                         {countdown.minutes} min
                                     </Typography>
                                 )}
-                                <Typography variant="body1">
+                                <Typography variant="h6">
                                     {countdown.seconds} sek
                                 </Typography>
                             </Box>
