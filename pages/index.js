@@ -335,7 +335,7 @@ const Home = () => {
                                 </Typography>
                             </Alert>
                             <JigsawPuzzle
-                                imageSrc="/IMG_0426.png"
+                                imageSrc="/IMG_0073.png"
                                 rows={4}
                                 columns={4}
                                 onSolved={() => {
