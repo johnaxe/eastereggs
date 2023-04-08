@@ -139,6 +139,7 @@ const Home = () => {
             8: false,
             9: false,
             10: false,
+            11: false,
         });
     };
 
